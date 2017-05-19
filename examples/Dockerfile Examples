@@ -1,0 +1,10 @@
+FROM php7.0-apache
+MAINTAINER sartori.felipe@gmail.com
+
+RUN apt-get jupdate && apt-get install -y vim
+RUN docker-php-ext-install pdo pdo_mysql
+
+WORKDIR /root
+ADD ./html/index.html /root/
+
+CMD["./run.sh"]

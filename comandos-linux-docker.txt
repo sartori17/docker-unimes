@@ -1,0 +1,42 @@
+/etc/init.d/apache2 start
+
+hyper-v
+enable pra funcionar o docker
+disable pra funcionar o virtualbox
+
+#comandos docker
+sudo docker-compose up -d mysql nginx
+
+docker-compose stop
+
+#abrir o bash
+docker-compose exec workspace bash
+
+#projects salvos em
+/var/projects/blog
+s
+#pasta compartilhada 
+/mnt/sf_Desktop
+
+#permissao acesso externo a pasta pela rede no windows
+sudo chmod 777 -R blog
+
+#addusr
+sudo addusr www-data vboxsf
+
+#altera o usuario dono da pasta
+sudo chown -R sartori html
+
+#criar link
+sudo ln -s /original /link
+
+#iniciar o apache
+sudo /etc/init.d/apache2 start
+
+v_mysqld.exe --skip-grant-tables
+mysql.exe
+UPDATE mysql.user SET Password=PASSWORD('vertrigo') WHERE User='root';
+FLUSH PRIVILEGES;
+
+#ctrl + c
+xclip file.txt

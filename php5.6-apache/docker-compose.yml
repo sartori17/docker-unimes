@@ -1,0 +1,25 @@
+version: '2'
+services:
+    db-mysql:
+        image: mysql:5.7
+        volumes:
+            - "/d/dev/public/database/data/db:/var/lib/mysql"
+        ports:
+            - "3308:3306"    
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: simples
+            MYSQL_USER: root
+            MYSQL_PASSWORD: secret
+    web:
+        volumes:
+            - "/d/dev/public/sites:/var/www/html"
+        depends_on:
+            - db-mysql
+        image: sartorifelipe/php5.6
+        links:
+            - db-mysql
+        ports:
+            - "8085:80"
+        restart: always

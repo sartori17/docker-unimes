@@ -1,0 +1,73 @@
+#comandos básicos
+docker ps
+docker-compose.exe up -d
+docker build -t sartorifelipe/php7.1 .
+docker-compose.exe stop
+docker exec -it webserver bash
+
+#limpar as docker images criadas e não utilizadass
+docker system prune
+
+Comando	Função
+$ docker	Listar todos os comandos
+$ docker version	Mostrar informações de versão Client e Server
+$ docker run image_name	Rodar uma determinada imagem
+$ docker images	Listar todas as imagens locais
+$ docker ps	Listar todos os containers em execução
+$ docker ps -a	Listar todos os containers existentes, independente se está em execução ou não
+$ docker start ID/Nome	Iniciar um container existente, basta informar nome ou ID no comando
+$ docker stop ID/Nome	Finalizar um container existente, basta informar nome ou ID no comando
+$ docker rm ID/Nome	Remover um container existente, basta informar nome ou ID no comando
+$ docker rmi ID/Nome	Remover uma imagem existente, basta informar nome ou ID no comando
+
+Docker o IP
+docker-machine ls
+
+Executar o nginx, na porta 8080 com name = webserver
+docker run -d -p 8080:80 --name webserver nginx
+
+
+O comando para execução será sempre o mesmo: $ docker exec.
+
+Exemplo: $ docker exec webserver uname -a
+
+Para acessarmos este container e realizarmos configurações no servidor, de forma interativa, rodamos o seguinte comando:
+
+$ docker exec -i -t webserver bash ou $ docker exec -it webserver bash
+
+$ docker exec
+$ DOCKER EXEC WEBSERVER UNAME -AS
+$ DOCKER EXEC -IT WEBSERVER BASH
+
+
+Para conseguirmos este apontamento, basta rodar o seguinte comando:
+
+$ docker run -d --name webserver2 -p 8081:80 -v /c/Users/wesley/docker-project/html:/usr/share/nginx/html nginx
+
+Para criar um container, rode o seguinte comando:
+
+$ docker run -d --name dbserver -e "MYSQL_ROOT_PASSWORD=root" -e "MYSQL_DATABASE=wordpress" mysql
+
+
+
+devemos inserir mais um parâmetro importante do comando run, que segue abaixo.
+
+$ docker run -d --name wordpress --link dbserver:mysql -p 8085:80 wordpress
+
+O parâmetro --link dbserver:mysql cria o vínculo entre nosso container mysql e o container wordpress.
+
+
+Agora, iremos acessar o container wordpress e testar a comunicação com o container mysql, utilizando o comando exec, attravés dos seguintes comandos:
+
+$ docker exec -it wordpress bash
+
+$ ping mysql
+
+
+Para conseguirmos ter acesso ao banco de dados no container wordpress precisamos instalar o mysql-client. Dentro do container vamos executar os seguintes passos:
+
+$ apt-get update
+$ apt-get install mysql-client
+$ mysql -uroot -h mysql -p ou $ mysql -uroot -h Name_Container -p ou $ mysql -uroot -h ID_Container -p
+
+
