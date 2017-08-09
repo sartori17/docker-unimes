@@ -3,6 +3,8 @@ services:
     db-mysql:
         image: mysql:5.7
         volumes:
+            - "./my.cnf:/etc/mysql/conf.d/my.cnf"
+            - "./sql_dump:/home/sql_dump"
             - "/d/dev/public/database/data/db:/var/lib/mysql"
         ports:
             - "3308:3306"    
@@ -14,7 +16,7 @@ services:
             MYSQL_PASSWORD: secret
     web:
         volumes:
-            - "/d/dev/public/sites:/var/www/html"
+            - "/d/dev/public/sites/server1:/var/www/html"
         depends_on:
             - db-mysql
         image: sartorifelipe/php5.6

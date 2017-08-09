@@ -4,7 +4,7 @@ MAINTAINER sartori.felipe@gmail.com
 RUN a2enmod rewrite
 RUN apt-get update && apt-get install -y vim
 RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-install mysqli 
+RUN docker-php-ext-install mysqli mysql
 RUN apt-get install -y zlib1g-dev
 RUN docker-php-ext-install zip
 RUN apt-get install -y xclip
@@ -23,3 +23,4 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
 && rm -f /tmp/composer-setup.*
 
+COPY php.ini /usr/local/etc/php/

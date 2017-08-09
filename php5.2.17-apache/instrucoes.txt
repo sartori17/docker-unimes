@@ -1,4 +1,0 @@
-- "/d/dev/public/database/data/db:/var/lib/mysql"
-
-
-- "/d/dev/public/database/data/server1:/var/lib/mysql"

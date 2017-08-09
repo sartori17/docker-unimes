@@ -5,6 +5,8 @@ docker build -t sartorifelipe/php7.1 .
 docker-compose.exe stop
 docker exec -it webserver bash
 
+command: mysqld --sql_mode=""
+
 #limpar as docker images criadas e não utilizadass
 docker system prune
 
@@ -71,3 +73,10 @@ $ apt-get install mysql-client
 $ mysql -uroot -h mysql -p ou $ mysql -uroot -h Name_Container -p ou $ mysql -uroot -h ID_Container -p
 
 
+
+
+mysql enviroment
+MYSQL_DATABASE: unimes_docker
+            MYSQL_USER: root
+            MYSQL_PASSWORD: vertrigo
+            
