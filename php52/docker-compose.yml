@@ -19,7 +19,7 @@ services:
             - "/d/www/server1:/var/www/html"
         depends_on:
             - php52mysql
-        image: yappabe/apache-php:5.2
+        image: sartorifelipe/php5.2
         links:
             - php52mysql
         ports:
